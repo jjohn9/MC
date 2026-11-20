@@ -17,19 +17,21 @@
     body {
       margin: 0;
       min-height: 100vh;
-      display: grid;
-      place-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
-      padding: 1.5rem 1rem;
+      padding: 2rem 1rem 3rem;
+      gap: 1.5rem;
     }
 
     /* Subtle interactive spotlight card */
     .card {
       position: relative;
       width: 100%;
-      max-width: 520px;
+      max-width: 580px;
       background: var(--card);
       backdrop-filter: blur(12px);
       border: 1px solid var(--border);
@@ -56,13 +58,37 @@
       font-size: 1.65rem;
       letter-spacing: -0.02em;
     }
-    ol {
+    h2 {
+      margin: 0 0 1rem;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+    h3 {
+      margin: 1.25rem 0 0.4rem;
+      font-size: 1rem;
+      color: #86efac;
+    }
+    p {
+      margin: 0 0 0.75rem;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.96rem;
+    }
+    ol.quick-steps {
       margin: 0 0 1.5rem;
       padding-left: 1.3rem;
       color: var(--muted);
       font-size: 1rem;
       line-height: 1.75;
     }
+    ol.detail-steps {
+      margin: 0 0 0.5rem;
+      padding-left: 1.3rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+    li { margin-bottom: 0.35rem; }
     li strong { color: var(--text); }
 
     .links {
@@ -83,7 +109,7 @@
     code {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       color: #86efac;
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       word-break: break-all;
     }
     button, .btn {
@@ -150,7 +176,7 @@
   <main class="card" id="card">
     <h1>Family Minecrafter Server</h1>
 
-    <ol>
+    <ol class="quick-steps">
       <li><strong>Get whitelisted:</strong> Send me your Minecraft username.</li>
       <li><strong>Install modpack:</strong> Download it in CurseForge below.</li>
       <li><strong>Join:</strong> Paste the server address in Multiplayer.</li>
@@ -175,14 +201,55 @@
     </div>
   </main>
 
-  <script>
-    const card = document.getElementById("card");
+  <section class="card">
+    <h2>Step-by-Step Setup Guide</h2>
 
-    // Subtle mouse-tracking spotlight gradient
+    <h3>Before You Start: Account &amp; Game</h3>
+    <ol class="detail-steps">
+      <li>You must already have a <strong>Microsoft account</strong> (older Mojang accounts must be migrated to Microsoft).</li>
+      <li>You must already have <strong>purchased Minecraft</strong> (specifically <strong>Minecraft: Java Edition</strong>) on that Microsoft account.</li>
+      <li>Send your exact Minecraft username so I can add you to the server whitelist.</li>
+    </ol>
+
+    <h3>Step 1: Download &amp; Install CurseForge</h3>
+    <ol class="detail-steps">
+      <li>Click <strong>Download CurseForge</strong> above and download the CurseForge app installer for your computer.</li>
+      <li>Run the installer and follow the prompts to finish setup.</li>
+      <li>Open CurseForge, pick <strong>Minecraft</strong>, select the recommended/standard setup, and click <strong>Continue</strong>.</li>
+    </ol>
+
+    <h3>Step 2: Install the Modpack</h3>
+    <ol class="detail-steps">
+      <li>Click <strong>Get CurseForge Modpack</strong> above (or search for <strong>Distant Horizons + Iris Shaders</strong> inside CurseForge).</li>
+      <li>Click <strong>Install</strong> and wait until the download and setup finish.</li>
+      <li>Go to <strong>My Modpacks</strong> in CurseForge to see your installed pack.</li>
+    </ol>
+
+    <h3>Step 3: Launch the Game</h3>
+    <ol class="detail-steps">
+      <li>Hover over the modpack in <strong>My Modpacks</strong> and click <strong>Play</strong>.</li>
+      <li>When the Minecraft Launcher opens, sign in with your <strong>Microsoft account</strong> that owns Minecraft.</li>
+      <li>Click <strong>Play</strong> in the Minecraft Launcher and wait for the modded game menu to load.</li>
+    </ol>
+
+    <h3>Step 4: Join the World</h3>
+    <ol class="detail-steps">
+      <li>Click <strong>Multiplayer</strong> on the Minecraft main menu.</li>
+      <li>Click <strong>Add Server</strong> (or <strong>Direct Connection</strong>).</li>
+      <li>Click <strong>Copy</strong> on the server address above, paste <code>dedication-wl.tun.ply.gg</code>, save, and join the world.</li>
+    </ol>
+  </section>
+
+  <script>
+    const cards = document.querySelectorAll(".card");
+
+    // Subtle mouse-tracking spotlight gradient on cards
     document.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-      card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+      cards.forEach((c) => {
+        const rect = c.getBoundingClientRect();
+        c.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+        c.style.setProperty("--my", `${e.clientY - rect.top}px`);
+      });
     });
 
     // Mini Minecraft-colored pixels on click
