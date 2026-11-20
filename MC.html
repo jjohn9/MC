@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Minecrafter Server</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card: rgba(30, 41, 59, 0.82);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #22c55e;
+      --border: rgba(148, 163, 184, 0.18);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 1.5rem 1rem;
+    }
+
+    /* Subtle interactive spotlight card */
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        420px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(34, 197, 94, 0.08),
+        rgba(56, 189, 248, 0.04) 50%,
+        transparent 80%
+      );
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 0 0 1.25rem;
+      font-size: 1.65rem;
+      letter-spacing: -0.02em;
+    }
+    ol {
+      margin: 0 0 1.5rem;
+      padding-left: 1.3rem;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+    li strong { color: var(--text); }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: #86efac;
+      font-size: 0.98rem;
+      word-break: break-all;
+    }
+    button, .btn {
+      background: var(--accent);
+      color: #052e16;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      padding: 0.55rem 0.95rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.12s ease, filter 0.15s ease;
+      white-space: nowrap;
+    }
+    button:hover, .btn:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+    .btn-full {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: #38bdf8;
+      color: #082f49;
+    }
+
+    /* Quick help links */
+    .guides {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .guides a {
+      color: #7dd3fc;
+      text-decoration: none;
+    }
+    .guides a:hover {
+      text-decoration: underline;
+    }
+
+    /* Subtle click burst blocks */
+    .pixel {
+      position: fixed;
+      width: 7px;
+      height: 7px;
+      pointer-events: none;
+      border-radius: 2px;
+      animation: pop 600ms ease-out forwards;
+      z-index: 9998;
+    }
+    @keyframes pop {
+      0% { opacity: 0.85; transform: translate(0, 0) scale(1); }
+      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3); }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <h1>Family Minecrafter Server</h1>
+
+    <ol>
+      <li><strong>Get whitelisted:</strong> Send me your Minecraft username.</li>
+      <li><strong>Install modpack:</strong> Download it in CurseForge below.</li>
+      <li><strong>Join:</strong> Paste the server address in Multiplayer.</li>
+    </ol>
+
+    <div class="links">
+      <a class="btn btn-full" href="https://www.curseforge.com/minecraft/modpacks/distant-horizons-iris-shaders" target="_blank" rel="noopener noreferrer">
+        Get CurseForge Modpack
+      </a>
+
+      <div class="row">
+        <code id="server-ip">dedication-wl.tun.ply.gg</code>
+        <button type="button" id="copy-btn" onclick="copyIp()">Copy</button>
+      </div>
+    </div>
+
+    <div class="guides">
+      <span>Need help?</span>
+      <a href="https://www.curseforge.com/download/app" target="_blank" rel="noopener noreferrer">Download CurseForge</a>
+      <a href="https://support.curseforge.com/support/solutions/articles/9000218572-minecraft-getting-started" target="_blank" rel="noopener noreferrer">Setup Guide</a>
+      <a href="https://support.curseforge.com/support/solutions/articles/9000196984-installing-minecraft-mods-and-modpacks" target="_blank" rel="noopener noreferrer">Installing Modpacks</a>
+    </div>
+  </main>
+
+  <script>
+    const card = document.getElementById("card");
+
+    // Subtle mouse-tracking spotlight gradient
+    document.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+      card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+    });
+
+    // Mini Minecraft-colored pixels on click
+    document.addEventListener("click", (e) => {
+      const colors = ["#22c55e", "#4ade80", "#38bdf8", "#a3e635"];
+      for (let i = 0; i < 6; i++) {
+        const p = document.createElement("span");
+        p.className = "pixel";
+        p.style.left = e.clientX + "px";
+        p.style.top = e.clientY + "px";
+        p.style.background = colors[i % colors.length];
+        const angle = (Math.PI * 2 * i) / 6;
+        const dist = 20 + Math.random() * 20;
+        p.style.setProperty("--dx", `${Math.cos(angle) * dist}px`);
+        p.style.setProperty("--dy", `${Math.sin(angle) * dist}px`);
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 600);
+      }
+    });
+
+    function copyIp() {
+      const ip = document.getElementById("server-ip").textContent.trim();
+      const btn = document.getElementById("copy-btn");
+      navigator.clipboard.writeText(ip).then(() => {
+        btn.textContent = "Copied!";
+        setTimeout(() => (btn.textContent = "Copy"), 1800);
+      });
+    }
+  </script>
+</body>
+</html>
