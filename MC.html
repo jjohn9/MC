@@ -31,7 +31,7 @@
     .card {
       position: relative;
       width: 100%;
-      max-width: 580px;
+      max-width: 620px;
       background: var(--card);
       backdrop-filter: blur(12px);
       border: 1px solid var(--border);
@@ -53,11 +53,30 @@
       pointer-events: none;
     }
 
+    .header-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1.35rem;
+    }
     h1 {
-      margin: 0 0 1.25rem;
-      font-size: 1.65rem;
+      margin: 0;
+      font-size: 1.75rem;
       letter-spacing: -0.02em;
     }
+    .badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 999px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
     h2 {
       margin: 0 0 1rem;
       font-size: 1.25rem;
@@ -74,21 +93,32 @@
       line-height: 1.6;
       font-size: 0.96rem;
     }
+
+    /* Much larger top 1, 2, 3 steps */
     ol.quick-steps {
-      margin: 0 0 1.5rem;
-      padding-left: 1.3rem;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.75;
+      margin: 0 0 1.75rem;
+      padding-left: 1.6rem;
+      color: var(--text);
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.85;
     }
-    ol.detail-steps {
+    ol.quick-steps li::marker {
+      color: var(--accent);
+      font-weight: 800;
+    }
+    ol.quick-steps li strong {
+      color: #86efac;
+    }
+
+    ol.detail-steps, ul.mod-notes {
       margin: 0 0 0.5rem;
       padding-left: 1.3rem;
       color: var(--muted);
       font-size: 0.95rem;
       line-height: 1.65;
     }
-    li { margin-bottom: 0.35rem; }
+    li { margin-bottom: 0.4rem; }
     li strong { color: var(--text); }
 
     .links {
@@ -109,7 +139,7 @@
     code {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       color: #86efac;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       word-break: break-all;
     }
     button, .btn {
@@ -132,9 +162,10 @@
     }
     .btn-full {
       width: 100%;
-      padding: 0.75rem 1rem;
+      padding: 0.8rem 1rem;
       background: #38bdf8;
       color: #082f49;
+      font-size: 1rem;
     }
 
     /* Quick help links */
@@ -174,7 +205,10 @@
 </head>
 <body>
   <main class="card" id="card">
-    <h1>Family Minecrafter Server</h1>
+    <div class="header-row">
+      <h1>Family Minecrafter Server</h1>
+      <span class="badge">NeoForge 26.2</span>
+    </div>
 
     <ol class="quick-steps">
       <li><strong>Get whitelisted:</strong> Send me your Minecraft username.</li>
@@ -202,6 +236,18 @@
   </main>
 
   <section class="card">
+    <h2>What's in the Modpack (14 Mods)</h2>
+    <p>This pack keeps gameplay <strong>100% vanilla</strong>—no new blocks, items, or machines—while boosting graphics, view distance, and FPS on our <strong>NeoForge 26.2</strong> server:</p>
+
+    <ul class="mod-notes">
+      <li><strong>Massive View Distance (Distant Horizons):</strong> Lets you see mountains and landscapes far beyond normal Minecraft render distance without lagging your PC. Give it a minute to cache distant chunks as you explore.</li>
+      <li><strong>Shaders Ready (Iris Shaders):</strong> Adds shader support under <em>Options &gt; Video Settings &gt; Shader Packs</em>. You can drop shader zip files in or toggle shaders off anytime if you want maximum FPS.</li>
+      <li><strong>Major FPS &amp; Memory Boosts (Sodium, Sodium Extra, Reese's Sodium Options, Lithium, FerriteCore, C2ME, Fast Noise, Structure Layout Optimizer):</strong> Speeds up chunk loading, reduces RAM usage, and organizes your Video Settings menu cleanly.</li>
+      <li><strong>Helper &amp; Menu Mods (Mod Menu, Crash Assistant, Fabric API, Resourceful Config):</strong> Behind-the-scenes libraries and menus so mods load cleanly and tell you what happened if the game ever crashes.</li>
+    </ul>
+  </section>
+
+  <section class="card">
     <h2>Step-by-Step Setup Guide</h2>
 
     <h3>Before You Start: Account &amp; Game</h3>
@@ -221,7 +267,7 @@
     <h3>Step 2: Install the Modpack</h3>
     <ol class="detail-steps">
       <li>Click <strong>Get CurseForge Modpack</strong> above (or search for <strong>Distant Horizons + Iris Shaders</strong> inside CurseForge).</li>
-      <li>Click <strong>Install</strong> and wait until the download and setup finish.</li>
+      <li>Make sure the version matches our <strong>NeoForge 26.2</strong> server, click <strong>Install</strong>, and wait for it to finish.</li>
       <li>Go to <strong>My Modpacks</strong> in CurseForge to see your installed pack.</li>
     </ol>
 
