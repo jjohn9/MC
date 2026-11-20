@@ -162,10 +162,19 @@
     }
     .btn-full {
       width: 100%;
-      padding: 0.8rem 1rem;
+      padding: 0.85rem 1rem;
       background: #38bdf8;
       color: #082f49;
       font-size: 1rem;
+    }
+    .btn-secondary {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      background: rgba(148, 163, 184, 0.14);
+      color: #e2e8f0;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-weight: 600;
     }
 
     /* Quick help links */
@@ -207,39 +216,44 @@
   <main class="card" id="card">
     <div class="header-row">
       <h1>Family Minecrafter Server</h1>
-      <span class="badge">NeoForge 26.2</span>
+      <span class="badge">Fabric 26.2</span>
     </div>
 
     <ol class="quick-steps">
       <li><strong>Get whitelisted:</strong> Send me your Minecraft username.</li>
-      <li><strong>Install modpack:</strong> Download it in CurseForge below.</li>
+      <li><strong>Import modpack:</strong> Download &amp; import our custom zip below.</li>
       <li><strong>Join:</strong> Paste the server address in Multiplayer.</li>
     </ol>
 
     <div class="links">
-      <a class="btn btn-full" href="https://www.curseforge.com/minecraft/modpacks/distant-horizons-iris-shaders" target="_blank" rel="noopener noreferrer">
-        Get CurseForge Modpack
+      <a class="btn btn-full" href="Distant%20Horizons%20%26%20Iris%20Shaders-0.4.2%2B26.2.fabric.zip" download>
+        Download Family Modpack (.zip)
       </a>
 
       <div class="row">
         <code id="server-ip">dedication-wl.tun.ply.gg</code>
         <button type="button" id="copy-btn" onclick="copyIp()">Copy</button>
       </div>
+
+      <a class="btn btn-secondary" href="https://www.curseforge.com/minecraft/modpacks/distant-horizons-iris-shaders" target="_blank" rel="noopener noreferrer">
+        Base CurseForge Page (Optional)
+      </a>
     </div>
 
     <div class="guides">
       <span>Need help?</span>
       <a href="https://www.curseforge.com/download/app" target="_blank" rel="noopener noreferrer">Download CurseForge</a>
       <a href="https://support.curseforge.com/support/solutions/articles/9000218572-minecraft-getting-started" target="_blank" rel="noopener noreferrer">Setup Guide</a>
-      <a href="https://support.curseforge.com/support/solutions/articles/9000196984-installing-minecraft-mods-and-modpacks" target="_blank" rel="noopener noreferrer">Installing Modpacks</a>
+      <a href="https://support.curseforge.com/support/solutions/articles/9000196984-installing-minecraft-mods-and-modpacks" target="_blank" rel="noopener noreferrer">Importing Modpacks</a>
     </div>
   </main>
 
   <section class="card">
-    <h2>What's in the Modpack (14 Mods)</h2>
-    <p>This pack keeps gameplay <strong>100% vanilla</strong>—no new blocks, items, or machines—while boosting graphics, view distance, and FPS on our <strong>NeoForge 26.2</strong> server:</p>
+    <h2>What's in the Modpack (15 Mods)</h2>
+    <p>This pack keeps gameplay <strong>100% vanilla</strong>—no new blocks, items, or machines—while adding proximity voice chat, massive view distance, shaders, and FPS boosts on our <strong>Fabric 26.2</strong> server:</p>
 
     <ul class="mod-notes">
+      <li><strong>Proximity Voice Chat (Simple Voice Chat):</strong> Talk to nearby players right inside Minecraft—voices get louder as you walk closer and fade as you move away. Press <strong>V</strong> in-game to pick your mic/speakers or toggle Push-to-Talk.</li>
       <li><strong>Massive View Distance (Distant Horizons):</strong> Lets you see mountains and landscapes far beyond normal Minecraft render distance without lagging your PC. Give it a minute to cache distant chunks as you explore.</li>
       <li><strong>Shaders Ready (Iris Shaders):</strong> Adds shader support under <em>Options &gt; Video Settings &gt; Shader Packs</em>. You can drop shader zip files in or toggle shaders off anytime if you want maximum FPS.</li>
       <li><strong>Major FPS &amp; Memory Boosts (Sodium, Sodium Extra, Reese's Sodium Options, Lithium, FerriteCore, C2ME, Fast Noise, Structure Layout Optimizer):</strong> Speeds up chunk loading, reduces RAM usage, and organizes your Video Settings menu cleanly.</li>
@@ -264,18 +278,18 @@
       <li>Open CurseForge, pick <strong>Minecraft</strong>, select the recommended/standard setup, and click <strong>Continue</strong>.</li>
     </ol>
 
-    <h3>Step 2: Install the Modpack</h3>
+    <h3>Step 2: Download &amp; Import Our Family Modpack (.zip)</h3>
     <ol class="detail-steps">
-      <li>Click <strong>Get CurseForge Modpack</strong> above (or search for <strong>Distant Horizons + Iris Shaders</strong> inside CurseForge).</li>
-      <li>Make sure the version matches our <strong>NeoForge 26.2</strong> server, click <strong>Install</strong>, and wait for it to finish.</li>
-      <li>Go to <strong>My Modpacks</strong> in CurseForge to see your installed pack.</li>
+      <li>Click the blue <strong>Download Family Modpack (.zip)</strong> button at the top of this page to save <code>Distant Horizons &amp; Iris Shaders-0.4.2+26.2.fabric.zip</code> to your Downloads folder (keep it zipped—do not unzip it).</li>
+      <li>In the CurseForge app, go to <strong>Minecraft &gt; My Modpacks</strong> and click <strong>Create Custom Profile</strong> (or the <strong>Import</strong> button at the top).</li>
+      <li>Choose <strong>Import</strong> (or <em>"import a previously created profile"</em>), select the downloaded <code>.zip</code> file, and wait for CurseForge to automatically download all 15 <strong>Fabric 26.2</strong> mods.</li>
     </ol>
 
-    <h3>Step 3: Launch the Game</h3>
+    <h3>Step 3: Launch the Game &amp; Set Up Voice Chat</h3>
     <ol class="detail-steps">
-      <li>Hover over the modpack in <strong>My Modpacks</strong> and click <strong>Play</strong>.</li>
-      <li>When the Minecraft Launcher opens, sign in with your <strong>Microsoft account</strong> that owns Minecraft.</li>
-      <li>Click <strong>Play</strong> in the Minecraft Launcher and wait for the modded game menu to load.</li>
+      <li>Hover over the imported modpack in <strong>My Modpacks</strong> and click <strong>Play</strong>.</li>
+      <li>When the Minecraft Launcher opens, sign in with your <strong>Microsoft account</strong> that owns Minecraft and click <strong>Play</strong>.</li>
+      <li>Once in-game, press <strong>V</strong> to open the <strong>Simple Voice Chat</strong> menu, choose your microphone and speakers, and run a quick mic test.</li>
     </ol>
 
     <h3>Step 4: Join the World</h3>
