@@ -94,14 +94,14 @@
       font-size: 0.96rem;
     }
 
-    /* Much larger top 1, 2, 3 steps */
+    /* Large top 1, 2, 3 steps */
     ol.quick-steps {
-      margin: 0 0 1.75rem;
+      margin: 0;
       padding-left: 1.6rem;
       color: var(--text);
       font-size: 1.3rem;
       font-weight: 500;
-      line-height: 1.85;
+      line-height: 1.75;
     }
     ol.quick-steps li::marker {
       color: var(--accent);
@@ -109,6 +109,19 @@
     }
     ol.quick-steps li strong {
       color: #86efac;
+    }
+
+    /* Inline download buttons between Step 2 and Step 3 */
+    .step-downloads {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+      margin: 0.9rem 0 1.1rem 1.6rem;
+    }
+    @media (max-width: 520px) {
+      .step-downloads {
+        grid-template-columns: 1fr;
+      }
     }
 
     ol.detail-steps, ul.mod-notes {
@@ -125,6 +138,16 @@
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
+      margin-top: 1.35rem;
+    }
+    .server-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+      display: block;
     }
     .row {
       display: flex;
@@ -148,24 +171,27 @@
       font-weight: 700;
       border: none;
       border-radius: 8px;
-      padding: 0.55rem 0.95rem;
+      padding: 0.65rem 0.95rem;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       text-align: center;
       cursor: pointer;
       transition: transform 0.12s ease, filter 0.15s ease;
-      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     button:hover, .btn:hover {
       filter: brightness(1.08);
       transform: translateY(-1px);
     }
-    .btn-full {
-      width: 100%;
-      padding: 0.85rem 1rem;
+    .btn-client {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    .btn-modpack {
       background: #38bdf8;
       color: #082f49;
-      font-size: 1rem;
     }
     .btn-secondary {
       width: 100%;
@@ -175,6 +201,12 @@
       border: 1px solid var(--border);
       font-size: 0.9rem;
       font-weight: 600;
+    }
+    .modpack-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: -0.35rem 0 0;
+      line-height: 1.5;
     }
 
     /* Quick help links */
@@ -221,29 +253,42 @@
 
     <ol class="quick-steps">
       <li><strong>Get whitelisted:</strong> Send me your Minecraft username.</li>
-      <li><strong>Import modpack:</strong> Download &amp; import our custom zip below.</li>
-      <li><strong>Join:</strong> Paste the server address in Multiplayer.</li>
+      <li><strong>Download 2 things:</strong> Install the CurseForge client &amp; download our modpack <code>.zip</code>.</li>
     </ol>
 
-    <div class="links">
-      <a class="btn btn-full" href="Distant%20Horizons%20%26%20Iris%20Shaders-0.4.2%2B26.2.fabric.zip" download>
-        Download Family Modpack (.zip)
+    <div class="step-downloads">
+      <a class="btn btn-client" href="https://www.curseforge.com/download/app" target="_blank" rel="noopener noreferrer">
+        1. Download CurseForge Client
       </a>
-
-      <div class="row">
-        <code id="server-ip">dedication-wl.tun.ply.gg</code>
-        <button type="button" id="copy-btn" onclick="copyIp()">Copy</button>
-      </div>
-
-      <a class="btn btn-secondary" href="https://www.curseforge.com/minecraft/modpacks/distant-horizons-iris-shaders" target="_blank" rel="noopener noreferrer">
-        Base CurseForge Page (Optional)
+      <a class="btn btn-modpack" href="Distant%20Horizons%20%26%20Iris%20Shaders-0.4.2%2B26.2.fabric.zip" download>
+        2. Download Modpack (.zip)
       </a>
     </div>
 
+    <ol class="quick-steps" start="3">
+      <li><strong>Import &amp; Join:</strong> Import the <code>.zip</code> in CurseForge and paste the server address below.</li>
+    </ol>
+
+    <div class="links">
+      <div>
+        <span class="server-label">Minecraft Server Address</span>
+        <div class="row">
+          <code id="server-ip">dedication-wl.tun.ply.gg</code>
+          <button type="button" id="copy-btn" onclick="copyIp()">Copy</button>
+        </div>
+      </div>
+
+      <a class="btn btn-secondary" href="https://www.curseforge.com/minecraft/modpacks/distant-horizons-iris-shaders" target="_blank" rel="noopener noreferrer">
+        Original Base Modpack on CurseForge
+      </a>
+      <p class="modpack-note">
+        <strong>Note:</strong> The original CurseForge pack above does <em>not</em> include <strong>Simple Voice Chat</strong>. Use our <strong>Modpack (.zip)</strong> button above instead, or add Simple Voice Chat manually (instructions below).
+      </p>
+    </div>
+
     <div class="guides">
-      <span>Need help?</span>
-      <a href="https://www.curseforge.com/download/app" target="_blank" rel="noopener noreferrer">Download CurseForge</a>
-      <a href="https://support.curseforge.com/support/solutions/articles/9000218572-minecraft-getting-started" target="_blank" rel="noopener noreferrer">Setup Guide</a>
+      <span>CurseForge Help:</span>
+      <a href="https://support.curseforge.com/support/solutions/articles/9000218572-minecraft-getting-started" target="_blank" rel="noopener noreferrer">Getting Started</a>
       <a href="https://support.curseforge.com/support/solutions/articles/9000196984-installing-minecraft-mods-and-modpacks" target="_blank" rel="noopener noreferrer">Importing Modpacks</a>
     </div>
   </main>
@@ -271,18 +316,25 @@
       <li>Send your exact Minecraft username so I can add you to the server whitelist.</li>
     </ol>
 
-    <h3>Step 1: Download &amp; Install CurseForge</h3>
+    <h3>Step 1: Download &amp; Install the CurseForge Client</h3>
     <ol class="detail-steps">
-      <li>Click <strong>Download CurseForge</strong> above and download the CurseForge app installer for your computer.</li>
+      <li>Click <strong>1. Download CurseForge Client</strong> above and download the installer for your computer.</li>
       <li>Run the installer and follow the prompts to finish setup.</li>
       <li>Open CurseForge, pick <strong>Minecraft</strong>, select the recommended/standard setup, and click <strong>Continue</strong>.</li>
     </ol>
 
     <h3>Step 2: Download &amp; Import Our Family Modpack (.zip)</h3>
     <ol class="detail-steps">
-      <li>Click the blue <strong>Download Family Modpack (.zip)</strong> button at the top of this page to save <code>Distant Horizons &amp; Iris Shaders-0.4.2+26.2.fabric.zip</code> to your Downloads folder (keep it zipped—do not unzip it).</li>
-      <li>In the CurseForge app, go to <strong>Minecraft &gt; My Modpacks</strong> and click <strong>Create Custom Profile</strong> (or the <strong>Import</strong> button at the top).</li>
-      <li>Choose <strong>Import</strong> (or <em>"import a previously created profile"</em>), select the downloaded <code>.zip</code> file, and wait for CurseForge to automatically download all 15 <strong>Fabric 26.2</strong> mods.</li>
+      <li>Click <strong>2. Download Modpack (.zip)</strong> above to save <code>Distant Horizons &amp; Iris Shaders-0.4.2+26.2.fabric.zip</code> to your Downloads folder (keep it zipped—do not unzip it).</li>
+      <li>In the CurseForge app, go to <strong>Minecraft &gt; My Modpacks</strong>, click <strong>Create Custom Profile</strong>, and choose <strong>Import</strong> (or <em>"import a previously created profile"</em>).</li>
+      <li>Select the downloaded <code>.zip</code> file. <strong>Note:</strong> CurseForge may pop up a warning that some files are not hosted on CurseForge—select the option to <strong>include those files</strong>, as this is completely normal and safe for our custom pack.</li>
+    </ol>
+
+    <h3>Optional: If You Installed the Original CurseForge Modpack Instead</h3>
+    <ol class="detail-steps">
+      <li>If you downloaded the base pack from CurseForge directly, <strong>Simple Voice Chat</strong> will be missing (you can still join the server, you just won't have proximity voice chat).</li>
+      <li>To add it: open the profile in CurseForge, click the <strong>three-dot menu (&hellip;) &gt; Profile Options</strong>, and check <strong>Allow content management for this profile</strong>.</li>
+      <li>Click <strong>Add More Content</strong>, search for <strong>Simple Voice Chat</strong>, and click <strong>Install</strong>.</li>
     </ol>
 
     <h3>Step 3: Launch the Game &amp; Set Up Voice Chat</h3>
